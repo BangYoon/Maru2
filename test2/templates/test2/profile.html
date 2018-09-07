@@ -1,0 +1,52 @@
+{% extends 'test2/base3.html' %}
+
+
+
+{% block profile %}
+<p>
+    ID :
+    {{ member_infos.identity}}
+</p>
+<p>
+    name :
+    {{ member_infos.name }}
+</p>
+<p>
+    me:
+    {{ member_infos.myinfo }}
+</p>
+<p>
+    follow:
+    {{ my_roles_num }}
+</p>
+<p>
+    follower:
+    {{ my_unders_num }}
+</p>
+
+<div class="for_member_info_edit">
+    <p>
+        {% if user.username == member_infos.identity.username %}
+        <a href="{% url 'member_info_edit' pk=user.pk %}">프로필 수정</a>
+        {% endif %}
+    </p>
+</div>
+
+
+{% endblock %}
+
+
+
+{% block my_posts %}
+    {% for post in user_posts %}
+<p>
+    {{ post.identity }}
+</p>
+<p>
+    {{ post.photo }}
+</p>
+
+        {% endfor %}
+
+
+{% endblock %}

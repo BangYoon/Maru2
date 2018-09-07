@@ -1,0 +1,142 @@
+﻿{% extends 'test2/base3.html' %}
+
+{% load static %}
+
+<!--
+{% block style %}
+        <style>
+        * {
+            box-sizing: border-box;
+            background-color: beige;
+        }
+        /*헤더부분*/
+        .container {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 100%;
+        }
+        .header {
+            border-bottom: 1px solid #01DFD7;
+            width: 100%;
+            height: 50px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100000;
+            background-color: white;
+        }
+        header a {
+            background-color: white;
+        }
+        header img {
+            width: 30px;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        .DaecheongMaru {
+            font-family: 'Dokdo', cursive;
+            display: inline;
+            color: black;
+            font-size: 25px;
+            background-color: white;
+            position: relative;
+            top: 0px;
+        }
+        .icon1, .icon2, .icon3, .icon4{
+            position: relative;
+            top: 7px;
+
+        }
+        .ToMain {
+            position: relative;
+            left: 125px;
+        }
+        .compass {
+            position: relative;
+            left: 750px;
+        }
+        .heart {
+            position: relative;
+            left: 762.5px;
+        }
+        .person {
+            position: relative;
+            left: 775px;
+        }
+{% endblock %}
+-->
+<!--
+{% block sub %}
+<div class="header">
+    <a href="{% url 'home' %}" class="ToMain">
+        <img src="{% static 'icon1.png' %}" alt="" class="icon1">
+        <div class="DaecheongMaru">대청마루</div>
+    </a>
+    <a href="compass.html" class="compass">
+        <img src="{% static 'icon2.png' %}" class="icon2">
+    </a>
+    <a href="heart.html" class="heart">
+        <img src="{% static 'icon3.png' %}" class="icon3">
+    </a>
+    <a href="#" class="person">
+        <img src="{% static 'icon4.png' %}" class="icon4">
+    </a>
+</div>
+{% endblock %}
+-->
+{% block profile %}
+<div class="profile">
+    <p>
+        ID :
+        {{ my_info.identity }}
+    </p>
+    <p>
+        name :
+        {{ my_info.name }}
+    </p>
+    <p>
+        me:
+        {{ my_info.myinfo }}
+    </p>
+</div>
+{% endblock %}
+
+{% block my_posts %}
+{% endblock %}
+
+
+{% block content %}
+    {% for post in posts %}
+<div class="post">
+    <div class="post_identity">
+        <div class="post_publisher">
+            {{ post.identity }}
+        </div>
+    </div>
+    <div class="post_created_date">
+        {{ post.created_date}}
+    </div><a href="{% url 'home' %}">
+        <div class="post_photo">
+            <img src="../media/{{ post.photo }}" width=100% height=540px>
+        </div>
+        <div class="post_story">
+            {{ post.story }}
+        </div>
+        <div class="post_published_date">
+            {{ post.published_date }}
+        </div>
+
+</div>
+    </a>
+    {% endfor %}
+{% endblock %}
+
+
+{% block logout %}
+<div class="header_sub">
+    <label>logout : &nbsp&nbsp<a href="{% url 'logout' %}"><input type="button" value="LOG OUT"></a></label>
+</div>
+{% endblock %}
